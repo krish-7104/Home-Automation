@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "874712636761",
+    "firebase_url": "https://homeautomation-17a8f-default-rtdb.firebaseio.com",
+    "project_id": "homeautomation-17a8f",
+    "storage_bucket": "homeautomation-17a8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874712636761:android:83e4a8942d8950eb0a0048",
+        "android_client_info": {
+          "package_name": "com.krish.homeautomation"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXIlVlwYWJarJdzxfAgb-T7FZWAWZTurs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
