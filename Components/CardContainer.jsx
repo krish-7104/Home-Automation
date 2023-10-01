@@ -29,12 +29,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Poppins-Medium',
-    fontSize: 20,
-    color: 'black',
+    fontSize: 16,
+    color: '#000000',
+    opacity: 0.8,
   },
   data: {
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 30,
+    fontSize: 26,
     color: 'black',
     letterSpacing: 2,
   },

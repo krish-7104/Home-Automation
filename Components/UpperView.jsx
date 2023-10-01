@@ -1,4 +1,10 @@
-import {Dimensions, StyleSheet, View} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import CardContainer from './CardContainer';
 import Navbar from './Navbar';
@@ -7,6 +13,7 @@ import {LineChart} from 'react-native-chart-kit';
 
 const UpperView = () => {
   const [data, setData] = useState();
+  const [select, setSelect] = useState('Temperature');
   useEffect(() => {
     const databaseRef = database().ref('/');
 
@@ -41,34 +48,89 @@ const UpperView = () => {
           <CardContainer title={'Humidity'} data={data?.Humidity} />
         </View>
       )}
+      <View style={styles.btnMainView}>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          onPress={() => setSelect('Temperature')}
+          style={
+            select === 'Temperature' ? styles.btnViewActive : styles.btnView
+          }>
+          <Text
+            style={
+              select === 'Temperature' ? styles.btnTextActive : styles.btnText
+            }>
+            Temperature
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          activeOpacity={0.8}
+          style={select === 'Humidity' ? styles.btnViewActive : styles.btnView}
+          onPress={() => setSelect('Humidity')}>
+          <Text
+            style={
+              select === 'Humidity' ? styles.btnTextActive : styles.btnText
+            }>
+            Humidity
+          </Text>
+        </TouchableOpacity>
+      </View>
       {data && (
         <>
-          <LineChart
-            style={styles.graphStyle}
-            data={{
-              labels: Object.entries(data.Temperature)
-                .map(([timestamp, value]) => ({
-                  x: timestamp,
-                  y: value,
-                }))
-                .slice(0, 5)
-                .map(dataPoint => dataPoint.x.slice(11)),
-              datasets: [
-                {
-                  data: Object.entries(data.Temperature)
-                    .map(([timestamp, value]) => ({
-                      x: timestamp,
-                      y: value,
-                    }))
-                    .slice(0, 5)
-                    .map(dataPoint => dataPoint.y),
-                },
-              ],
-            }}
-            width={Dimensions.get('window').width - 10}
-            height={220}
-            chartConfig={chartConfig}
-          />
+          {select === 'Temperature' ? (
+            <LineChart
+              style={styles.graphStyle}
+              data={{
+                labels: Object.entries(data.Temperature)
+                  .map(([timestamp, value]) => ({
+                    x: timestamp,
+                    y: value,
+                  }))
+                  .slice(0, 5)
+                  .map(dataPoint => dataPoint.x.slice(11)),
+                datasets: [
+                  {
+                    data: Object.entries(data.Temperature)
+                      .map(([timestamp, value]) => ({
+                        x: timestamp,
+                        y: value,
+                      }))
+                      .slice(0, 5)
+                      .map(dataPoint => dataPoint.y),
+                  },
+                ],
+              }}
+              width={Dimensions.get('window').width - 30}
+              height={220}
+              chartConfig={chartConfig}
+            />
+          ) : (
+            <LineChart
+              style={styles.graphStyle}
+              data={{
+                labels: Object.entries(data.Humidity)
+                  .map(([timestamp, value]) => ({
+                    x: timestamp,
+                    y: value,
+                  }))
+                  .slice(0, 5)
+                  .map(dataPoint => dataPoint.x.slice(11)),
+                datasets: [
+                  {
+                    data: Object.entries(data.Humidity)
+                      .map(([timestamp, value]) => ({
+                        x: timestamp,
+                        y: value,
+                      }))
+                      .slice(0, 5)
+                      .map(dataPoint => dataPoint.y),
+                  },
+                ],
+              }}
+              width={Dimensions.get('window').width - 30}
+              height={220}
+              chartConfig={chartConfig}
+            />
+          )}
         </>
       )}
     </View>
@@ -95,5 +157,40 @@ const styles = StyleSheet.create({
     marginHorizontal: 'auto',
     borderRadius: 10,
     marginVertical: 30,
+  },
+  btnMainView: {
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '100%',
+    marginTop: 10,
+  },
+  btnView: {
+    backgroundColor: '#fff',
+    width: '40%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  btnText: {
+    fontFamily: 'Poppins-Medium',
+    color: '#cd5c5c',
+    paddingVertical: 6,
+  },
+  btnViewActive: {
+    backgroundColor: '#cd5c5c',
+    width: '40%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    elevation: 14,
+    shadowColor: '#cd5c5c',
+  },
+  btnTextActive: {
+    fontFamily: 'Poppins-Medium',
+    color: 'white',
+    paddingVertical: 6,
   },
 });

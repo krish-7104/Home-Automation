@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   navtext: {
     fontFamily: 'Poppins-SemiBold',
-    fontSize: 25,
+    fontSize: 22,
     paddingHorizontal: 10,
     paddingVertical: 12,
     color: 'black',
