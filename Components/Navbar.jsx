@@ -1,5 +1,6 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import {externalStyle} from './colors';
 
 const Navbar = () => {
   return (
@@ -15,7 +16,9 @@ const styles = StyleSheet.create({
   navigation: {
     width: '100%',
     elevation: 10,
-    backgroundColor: 'white',
+    backgroundColor: externalStyle.accent,
+    // borderBottomEndRadius: 20,
+    // borderBottomStartRadius: 20,
   },
   navtext: {
     fontFamily: 'Poppins-SemiBold',
@@ -24,5 +27,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     color: 'black',
     textAlign: 'center',
+    color: 'white',
   },
 });

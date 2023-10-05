@@ -10,6 +10,7 @@ import CardContainer from './CardContainer';
 import Navbar from './Navbar';
 import database from '@react-native-firebase/database';
 import {LineChart} from 'react-native-chart-kit';
+import {externalStyle} from './colors';
 
 const UpperView = () => {
   const [data, setData] = useState();
@@ -175,18 +176,18 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontFamily: 'Poppins-Medium',
-    color: '#cd5c5c',
+    color: externalStyle.accent,
     paddingVertical: 6,
   },
   btnViewActive: {
-    backgroundColor: '#cd5c5c',
+    backgroundColor: externalStyle.accent,
     width: '40%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     elevation: 14,
-    shadowColor: '#cd5c5c',
+    shadowColor: externalStyle.accent,
   },
   btnTextActive: {
     fontFamily: 'Poppins-Medium',

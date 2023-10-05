@@ -2,6 +2,7 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Lightbulb, LightbulbOff} from 'lucide-react-native';
 import database from '@react-native-firebase/database';
+import {externalStyle} from './colors';
 
 const LowerView = () => {
   const [data, setData] = useState();
@@ -52,10 +53,10 @@ export default LowerView;
 
 const styles = StyleSheet.create({
   lowerView: {
-    backgroundColor: '#cd5c5c',
+    backgroundColor: externalStyle.accent,
     height: '30%',
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     elevation: 20,
     display: 'flex',
     justifyContent: 'center',

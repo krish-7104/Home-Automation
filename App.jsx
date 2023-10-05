@@ -6,12 +6,10 @@ import database from '@react-native-firebase/database';
 
 const App = () => {
   const [showPopup, setShowPopup] = useState(false);
-
   useEffect(() => {
     const databaseRef = database().ref('/Flame');
-
     const onDataChange = snapshot => {
-      if (snapshot.val() === 1) {
+      if (snapshot.val() === 0) {
         setShowPopup(true);
       }
     };
